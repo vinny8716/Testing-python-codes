@@ -14,5 +14,5 @@ while i < len(dns_list):
         print(dns_list[i], 'DNS settings are good')
     else:
         print(dns_list[i], 'DNS settings are not working!')
-        bad_dns.append(dns_list[i])
+        bad_dns.append(good_ips[i])
     i = i + 1
