@@ -11,13 +11,13 @@ sender = 'ITDesk@mailhog.com'
 password = ''
 receiver = 'Stakeholders@mailhog.com'
 fix1 = [network_devices[10]['Device Name'], network_devices[10]['Device Address']]
-fix1_hostname = ''
+fix1_hostname = 'svr1.d522.wgu.internal'
 fix2 = [network_devices[11]['Device Name'], network_devices[11]['Device Address']]
-fix2_hostname = ''
+fix2_hostname = 'svr2.d522.wgu.internal'
 #email massage
 Timestamp = datetime.datetime.now()
 msg = EmailMessage()
-msg['Subject'] = 'URGENT: Device Compromise Detected—Immediate Attention Required'
+msg['Subject'] = 'RESOLVED: DNS Service Issue and Device Compromise—All Issues Remediated'
 msg['From'] = sender
 msg['To'] = receiver
 msg.set_content('Dear Stakeholders,\n'
