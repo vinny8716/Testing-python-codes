@@ -37,5 +37,5 @@ while i < len(ip_list):
         print(f'Connection failed to {device_name}: {e}')
     finally:
         client.close()
-    i = i + 
+    i = i + 1
 print(bad_DNS, 'These Devices need to be checked!')
