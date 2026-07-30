@@ -13,7 +13,7 @@ cmd = ['ping', '-c', '1', ip_list[i]]
 #DNS settings check config
 username = 'ubuntu'
 password = 'ubuntu'
-command = 'resolvectl status'
+command = 'cat /etc/resolv.conf'
 temp_readout = ''
 client = paramiko.SSHClient()
 client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
@@ -28,13 +28,14 @@ while i < len(ip_list):
         client.connect(host = ip_list[i], username = username, password = password, timeout = 10)
         stdin, stdout, stderr = client.exec_command(command)
         temp_readout = stdout.read().decode()
-        if '127.0.0.1' in temp_readout:
-            ip_list.append(ip_list[i])
-            print(f'{device_name} is pingable, and DNS settings are wrong!')
+        if '203.0.113.10' in temp_readout:
+            bad_DNS.append(ip_list[i])
+            print(f'{ip_list[i]} is pingable, and DNS settings are wrong!')
         else:
-            print(f'{device_name} is pingable, but DNS settings are right!')
+            print(f'{ip_list[i]} is pingable, but DNS settings are right!')
     except (socket.error, paramiko.SSHEexception) as e:
-        print(f'Connection failed: {e}')
+        print(f'Connection failed to {device_name}: {e}')
     finally:
         client.close()
-        i = i + 1
+    i = i + 
+print(bad_DNS, 'These Devices need to be checked!')
