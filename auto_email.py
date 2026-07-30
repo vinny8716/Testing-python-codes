@@ -25,7 +25,7 @@ while  i < len(bad_DNS):
     '\n'
     'This is an automated alert to inform you that the following device(s) have been identified as compromised during the recent network scan:\n'
     '\n'
-    f'Device Name: {Device_name}\n'
+    f'Device Name: {Device_temp}\n'
     f'IP Address: {IP_Address}\n'
     f'Last Checked: {Timestamp}\n'
     '\n'
