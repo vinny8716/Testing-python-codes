@@ -13,8 +13,6 @@ cmd = ['ping', '-c', '1', ip_list[i]]
 username = 'ubuntu'
 password = 'ubuntu'
 command = 'cat /etc/resolv.conf'
-client = paramiko.SSHClient()
-client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
 temp_readout = ''
 
 #ip ping
@@ -24,6 +22,8 @@ while i < len(ip_list):
     except (subprocess.CalledProcessError, FileNotFoundError):
         print(f'{ip_list[i]} is down!')
     try:
+        client = paramiko.SSHClient()
+        client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
         client.connect(host = ip_list[i], username = username, password = password, timeout = 5)
         stdin, stdout, stderr = client.exec_command(command)
         temp_readout = stdout.read().decode()
