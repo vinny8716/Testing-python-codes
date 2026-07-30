@@ -25,7 +25,7 @@ while i < len(ip_list):
     except (subprocess.CalledProcessError, FileNotFoundError):
         print(f'{ip_list[i]} is down!')
     try:
-        client.connect(host = ip_list[i], username = username, password = password, timeout = 10)
+        client.connect(hostname = ip_list[i], username = username, password = password, timeout = 10)
         stdin, stdout, stderr = client.exec_command(command)
         temp_readout = stdout.read().decode()
         if '203.0.113.10' in temp_readout:
@@ -33,7 +33,7 @@ while i < len(ip_list):
             print(f'{ip_list[i]} is pingable, and DNS settings are wrong!')
         else:
             print(f'{ip_list[i]} is pingable, but DNS settings are right!')
-    except (socket.error, paramiko.SSHEexception) as e:
+    except Exception as e:
         print(f'Connection failed to {device_name}: {e}')
     finally:
         client.close()
