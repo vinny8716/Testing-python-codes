@@ -1,6 +1,6 @@
 import smtplib
 from email.message import EmailMessage
-from dns_ip_check import bad_dns
+from IP_CHECK import bad_DNS
 from network_devices_list import network_devices
 import datetime
 
@@ -10,16 +10,12 @@ port = 1025
 sender = 'ITDesk@mailhog.com'
 password = ''
 receiver = 'Stakeholders@mailhog.com'
+Device_name = ['PC3', 'SVR1', 'SVR2']
 #email massage
 i = 0
-while i < len(bad_dns):
-    Device_name = ''
-    for device in network_devices:
-        if bad_dns[i] in device['Device Address']:
-              Device_name = device['Device Name']
-        else:
-             pass
-    IP_Address = bad_dns[i]
+while  i < len(bad_DNS):
+    Device_temp = Device_name[i]
+    IP_Address = bad_DNS[i]
     Timestamp = datetime.datetime.now()
     msg = EmailMessage()
     msg['Subject'] = 'URGENT: Device Compromise Detected—Immediate Attention Required'
