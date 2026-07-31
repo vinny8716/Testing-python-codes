@@ -1,17 +1,18 @@
 import paramiko
-from dns_ip_check import bad_dns
 username = 'ubuntu'
 password = 'ubuntu'
+bad_DNS = ['192.168.30.101', '192.168.20.210', '192.168.30.210']
 i = 0
 
 while i < len(bad_dns):
     ssh = paramiko.SSHClient()
     ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-    ssh.connect(hostname=bad_dns[i], username=username, password=password)
+    ssh.connect(hostname=bad_DNS[i], username=username, password=password)
 
 
     command = (
         "sudo sed -i 's/^#\\?DNS=.*/DNS=10.10.10.10 10.10.10.20/' /etc/systemd/resolved.conf && "
+        "cat /etc/systemd/resolved.conf"
         "sudo systemctl restart systemd-resolved"
     )
 
