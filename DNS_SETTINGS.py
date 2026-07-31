@@ -4,7 +4,7 @@ password = 'ubuntu'
 bad_DNS = ['192.168.30.101', '192.168.20.210', '192.168.30.210']
 i = 0
 
-while i < len(bad_dns):
+while i < len(bad_DNS):
     ssh = paramiko.SSHClient()
     ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     ssh.connect(hostname=bad_DNS[i], username=username, password=password)
