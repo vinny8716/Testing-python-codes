@@ -18,7 +18,7 @@ while i < len(bad_DNS):
 
     stdin, stdout, stderr = ssh.exec_command(command)
 
-
+    print(bad_DNS[i])
     print(stdout.read().decode())
     print(stderr.read().decode())
 
