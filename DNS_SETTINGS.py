@@ -12,8 +12,8 @@ while i < len(bad_DNS):
 
     command = (
         "sudo sed -i 's/^#\\?DNS=.*/DNS=10.10.10.10 10.10.10.20/' /etc/systemd/resolved.conf && "
-        "cat /etc/systemd/resolved.conf"
-        "sudo systemctl restart systemd-resolved"
+        "sudo systemctl restart systemd-resolved && "
+        "resolvectl status"
     )
 
     stdin, stdout, stderr = ssh.exec_command(command)
