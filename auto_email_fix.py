@@ -10,10 +10,7 @@ port = 1025
 sender = 'ITDesk@mailhog.com'
 password = ''
 receiver = 'Stakeholders@mailhog.com'
-fix1 = [network_devices[10]['Device Name'], network_devices[10]['Device Address']]
-fix1_hostname = 'svr1.d522.wgu.internal'
-fix2 = [network_devices[11]['Device Name'], network_devices[11]['Device Address']]
-fix2_hostname = 'svr2.d522.wgu.internal'
+
 #email massage
 Timestamp = datetime.datetime.now()
 msg = EmailMessage()
@@ -24,8 +21,9 @@ msg.set_content('Dear Stakeholders,\n'
 '\n'
 'This is an automated notification to inform you that the DNS service issue and all related device compromises have been successfully resolved. The following devices were affected and have now been remediated:\n'
 '\n'
-f'{fix1[0]}, {fix1_hostname}, {fix1[1]}\n'
-f'{fix2[0]}, {fix2_hostname}, {fix2[1]}\n'
+'PC3\n'
+'SVR1\n'
+'SVR2\n'
 '\n'
 'No further action is required at this time. If you have any questions or concerns, please contact the IT support team.\n'
 '\n'
